@@ -73,21 +73,57 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    grid-template-areas: '. . .';
-    grid-gap: 1rem;
     border: none;
-    margin: 10px;
+    border-radius: 50px;
+    margin: 20px;
+    color: whitesmoke;
     
 }
 
-.wind, .precipitation, .temperature {
+.col3, .col2, .col1{
     height: 300px;
-    border-radius: 5px;
     padding: 5px;
     background: #858483;
     box-shadow: 10px 10px 5px 0px rgba(102,99,102,1);
+}
+
+.col1{
+    border-radius: 15px 0px 0px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.col3 {
+    border-radius: 0px 15px 15px 0px;
+}
+
+.temperature {
+    color: whitesmoke;
+    font-size: 3.5rem;
+    text-align: center;
+    margin-top: 0;
+}
+
+.humidity, .precipType, .precipProbability, .wind {
+    font-size: 20px;
+    text-align: center;
+
+}
+.col3 {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     
 }
 
-
+.summary { 
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    font-size: 2rem;
+    font-style: italic;
+    
+}
 

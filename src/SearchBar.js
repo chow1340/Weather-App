@@ -1,20 +1,79 @@
 import React from 'react'
 
-function SearchBar () {
-    return (
-        <div className = 'search-box'> 
-            <input 
-                className = 'search-text' 
-                type = 'text' 
-                name = 'location' 
-                placeholder = 'Type your location'>
+import Script, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-load-script';
+/*global google*/
 
-            </input>
-            <button> <img draggable = 'false' src = 'https://cdn2.iconfinder.com/data/icons/media-and-navigation-buttons-round/512/Button_15-512.png' 
-            alt = 'search button' /></button>
+class Search extends React.Component {
+    constructor(props) {
+      super(props);
+  
+      this.state = {
+        city: '',
+        query: '',
+        lat: '2',
+        lng: '3'
+      };
+      
+      this.handleSubmit = this.handleSubmit.bind(this)
+  
+    }
+  
+    handleScriptLoad = () => {
+      const options = {
+        types: ['(cities)'],
+      };
+  
+       this.autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById('autocomplete'),
+        options,
+      );
+      this.autocomplete.setFields(['geometry']) //limit field to geometry
 
-        </div>
-    )
+      
+    }
+    
+    handleSubmit = (event) => {
+      const addressObject = this.autocomplete.getPlace();
+      const address = addressObject.address_components;
+      
+        this.setState(
+          {
+           
+            
+            lat: addressObject.geometry.location.lat(),
+            lng: addressObject.geometry.location.lng(),
+          }
+        );
+        
+      
+      console.log (addressObject.geometry.location.lng())
+      event.preventDefault()
+      
+    }
+    
+  
+    render() {
+        return (
+          <div>
+            <Script
+              url="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnqBcICpcIUF4OcyIjqIEoIMXYOXqZnG8&libraries=places"
+              onLoad={this.handleScriptLoad}
+            />
+            <div className = 'search-box'>
+            <form onSubmit = {this.handleSubmit}>
+              <input className = 'search-text'type = 'textbox' id="autocomplete" placeholder="Type your city"  
+              />
+              <button> submit</button>
+              
+            </form>
+              {this.state.lat}, {this.state.lng}
+            </div>
+          </div>
+        );
+      }
 }
 
-export default SearchBar
+export default Search
