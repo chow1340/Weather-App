@@ -24,47 +24,59 @@ h1 {
 }
 
 .search-box {
-    
-    top: 20%;
-    left: 50%;
-    width: 80%;
     background: #2f3640;
+    width: 80%;
     border-radius: 40px;
     padding: 10px;
     display: flex;
     justify-content: center;
     margin: auto;
+    overflow: hidden;
+    position: relative;
     
 }
-.search-box > button >img {
-    width: 30px;
+.form > button >img {
+    width: 15px;
+    color: #2f3640;
     background-color: #2f3640;
-    display:flex;
-    float:right;
+    border: none;
+    mix-blend-mode: multiply;
+    
+  
+    
     
 }
 .search-text {
-    width: 85%;
+    margin: auto;
+    width: 90%;
     background-color: #cccac9;
     border:none;
     border-radius: 4px;
     padding: 5px;
+    margin: auto;
     font-family: Arial, Helvetica, sans-serif;
     color: #575554;
+    position: absolute;
+    bottom: 8px;
+}
+.form {
+    width: 100%
 }
 .search-text:focus{
     outline: none;
 }
-.search-box > button {
+.form > button {
     background-color: #2f3640;
     border: none;
-    position: relative;
-    right: 0;
+    float:right;
+    padding-left: 3px;
+  
+    
 }
-.search-box > button:hover {
+.form > button:hover {
     cursor: pointer;
 }
-.search-box > button:focus {
+.form > button:focus {
     outline: none;
 }
 
@@ -94,8 +106,14 @@ h1 {
     justify-content: center;
 }
 
-.col3 {
-    border-radius: 0px 15px 15px 0px;
+.col2 {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    
+}
+.icon {
+    margin: auto;
 }
 
 .temperature {
@@ -111,12 +129,16 @@ h1 {
 
 }
 .col3 {
+    border-radius: 0px 15px 15px 0px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    
+    padding-right: 20px;
 }
-
+.canvas {
+    width: 100px;
+    height: 100px;
+}
 .summary { 
     color: whitesmoke;
     text-align: center;
@@ -126,4 +148,5 @@ h1 {
     font-style: italic;
     
 }
+
 

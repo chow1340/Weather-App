@@ -1,22 +1,15 @@
 import React from 'react'
 
-import Script, {
-  geocodeByAddress,
-  getLatLng,
-} from 'react-load-script';
+import Script from 'react-load-script';
 /*global google*/
 
 class Search extends React.Component {
     constructor(props) {
       super(props);
-  
       this.state = {
-        city: '',
-        query: '',
-        lat: '2',
-        lng: '3'
-      };
-      
+        lat: '',
+        lng: ''
+      }
       this.handleSubmit = this.handleSubmit.bind(this)
   
     }
@@ -37,19 +30,13 @@ class Search extends React.Component {
     
     handleSubmit = (event) => {
       const addressObject = this.autocomplete.getPlace();
-      const address = addressObject.address_components;
-      
-        this.setState(
+        this.props.update(
           {
-           
-            
             lat: addressObject.geometry.location.lat(),
             lng: addressObject.geometry.location.lng(),
           }
         );
-        
-      
-      console.log (addressObject.geometry.location.lng())
+      /*console.log (addressObject.geometry.location.lng()) */
       event.preventDefault()
       
     }
@@ -63,13 +50,12 @@ class Search extends React.Component {
               onLoad={this.handleScriptLoad}
             />
             <div className = 'search-box'>
-            <form onSubmit = {this.handleSubmit}>
-              <input className = 'search-text'type = 'textbox' id="autocomplete" placeholder="Type your city"  
-              />
-              <button> submit</button>
-              
-            </form>
-              {this.state.lat}, {this.state.lng}
+              <form className = 'form' onSubmit = {this.handleSubmit}>
+                <input className = 'search-text'type = 'textbox' id="autocomplete" placeholder="Type your city"  
+                />
+                <button><img src = 'https://cdn.imgbin.com/17/18/14/imgbin-computer-icons-search-box-button-button-EJe5CdpnFg2GQA6h6PpqD5L9X.jpg'></img> 
+                </button>
+              </form>
             </div>
           </div>
         );
