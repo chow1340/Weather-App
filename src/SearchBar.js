@@ -53,7 +53,7 @@ class Search extends React.Component {
               <form className = 'form' onSubmit = {this.handleSubmit}>
                 <input className = 'search-text'type = 'textbox' id="autocomplete" placeholder="Type your city"  
                 />
-                <button><img src = 'https://cdn.imgbin.com/17/18/14/imgbin-computer-icons-search-box-button-button-EJe5CdpnFg2GQA6h6PpqD5L9X.jpg'></img> 
+                <button><img alt = 'search' src = 'https://cdn.imgbin.com/17/18/14/imgbin-computer-icons-search-box-button-button-EJe5CdpnFg2GQA6h6PpqD5L9X.jpg'></img> 
                 </button>
               </form>
             </div>
