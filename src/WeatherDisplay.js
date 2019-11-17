@@ -9,15 +9,24 @@ function WeatherDisplay(props) {
     const defaults = {
         icon: displayIcon()
     }
+
+    const tempstyle = () => {
+        if (props.data.temperature = null){
+            return ''
+        } else {
+            return Math.round((5/9)*(props.data.temperature-32))
+        }
+    }   
     
         return (
             <div>
+                
                 
                 <div className = 'summary'> {props.data.summary} </div>
                 <div className = 'weatherContainer'>
                     <div className = 'weatherGrid'>
                         <div className = 'col1'> 
-                            <p className = 'temperature'>{Math.round((5/9)*(props.data.temperature-32))} °C </p>
+                            <p className = 'temperature'> {Math.round((5/9)*(props.data.temperature-32))} °C </p>
                             <p className = 'humidity'>Humidity : {props.data.humidity}</p> 
                         </div>
                         
